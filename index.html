@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <title>To Do List</title>
 </head>
 <body>
   <input id="todo" type="text">
@@ -17,6 +18,9 @@
         if (action.type == 'add') {
           newState.push(action.item);
         }
+        if (action.type == 'remove') {
+          newState.splice(action.index, 1);
+    }
         return newState;
       }
     });
@@ -27,10 +31,17 @@
       const container = document.getElementById('container');
       container.innerHTML = '';
       const state = store.getState();
-      state.todos.forEach((todo) => {
+      state.todos.forEach((todo, i) => {
         const e = document.createElement('div');
         e.innerHTML = todo;
         container.appendChild(e);
+        e.onclick = () => {
+          store.dispatch({
+            type: 'remove',
+            index: i
+          });
+          render();
+        }
       });
     };
     document.getElementById('submit-todo').onclick = () => {
@@ -39,7 +50,7 @@
       item: document.getElementById('todo').value
     });
     render();
-   };
+    };
   </script>
 </body>
 </html>
