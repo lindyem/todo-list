@@ -11,7 +11,26 @@ body {
   margin: 0;
 }
 
+.container {
+  align-items: center;
+}
+
+h1 {
+  font-family: 'Roboto', sans-serif; 
+  color: aliceblue;
+}
+
 button {
   font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  background-color: white;
+  color: #7d5fff;
+  border: none;
+  border-radius: 5px;
+}
+
+#container {
+  font-family: 'Roboto', sans-serif; 
+  color: aliceblue;
 }
 
